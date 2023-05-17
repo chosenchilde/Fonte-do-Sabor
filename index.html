@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Delicious, tasty and juicy recipes for your daily">
+    <meta name="author" descrition="Lucas Belchior &lt;edencyberspace@gmail.com&gt;">
+    <meta name="keywords" description="JavaScript, HTML5, CSS3, semântica, mobile-first, responsividade, api, rest">
+    <link rel="stylesheet" href="" id="pageCSS">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="images/logo.png">
+    <title>Delicious Meals</title>
+</head>
+
+<body>
+    <!--- Wrap --->
+    <div id="wrap">
+
+        <!--- Header --->
+        <header>
+            <img srec="images/logo.png" alt="Logotipo Delicious Meals">
+            <h1 id="siteInfos">
+                Name<br>
+                <small>Slogan</small>
+            </h1>
+        </header>
+
+        <!--- Nav --->
+        <nav>
+            <div class="topnav">
+                <a class="active" href="home">Home</a>
+                <a href="about">About</a>
+                <div class="search-container">
+                  <form action="/action_page.php">
+                    <input type="text" placeholder="Search a recipe here..." id="search" name="search" required minlength="4">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+                </div>
+              </div>
+        </nav>
+
+        <!--- Main --->
+        <main></main>
+
+        <!--- Footer --->
+        <footer></footer>
+        <hr class="nbsp">
+    </div>
+    <!--- Fim do Wrap --->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

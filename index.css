@@ -1,0 +1,299 @@
+/*
+ * Folhas de estilo do template do site.
+ * By Luferat
+ */
+
+/* Importa bibliotecas externas. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+/* RESET - Normalize - define regras de comportamento do design 
+* do site dependendo do navegador utilizado, padronizando-o.*/
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+}
+
+/* Define a fonte e o fundo padrão da página. */
+body {
+    font-family: Roboto, sans-serif;
+    /* Criamos uma nova unidade chamada 'rem' → lrem = 16px */
+    font-size: 16px;
+    height: 100%;
+    background-color: #f1f1f1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#wrap {
+    background-color: #fff;
+    background-size: cover;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    text-align: justify;
+    height: 100%;
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    position: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Alterações na header do blog e seus espaçamentos. */
+#wrap>header {
+    background-color: #ffffff;
+    margin: 5.5rem 0.5rem 0.5rem 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+#wrap>header img {
+    width: 6rem;
+    margin-left: 1rem;
+    margin-right: 10px;
+}
+
+#wrap>header h1 {
+    margin: 0;
+}
+
+/* Menu*/
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+  margin-top: 2.5rem;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #d11c0f;
+  color: white;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+/* Alterações nos artigos principais de exibição da tela,
+ * Ou seja, seu conteúdo. */
+#wrap>main {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    flex-grow: 1;
+    background-color: #fff;
+}
+
+#wrap>main>article {
+    padding: 10px;
+    text-align: justify;
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #414141;
+    line-height: 20px;
+    position: relative;
+    flex-grow: 1;
+    background-color: #fff;
+}
+
+#wrap>main>aside {
+    padding: 10px;
+    text-align: justify;
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #414141;
+    position: relative;
+    background-color: #fff;
+}
+
+
+/* Barra de rolamento vertical personalizada */
+::-webkit-scrollbar {
+    background-color: #000;
+    border: 4px solid #fff;
+    height: 9px;
+    width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000;
+    border: 3px solid #fff;
+    height: auto;
+    width: 5px;
+}
+
+/* Hack para mostrar margem inferior em dispositivos mobile.*/
+.nbsp {
+    height: 1px;
+    margin: 0;
+    border: .25rem solid transparent;
+}
+
+.center {
+    text-align: center;
+}
+
+.spin {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin-top: 1rem;
+    color: #b86026;
+}
+
+/*********/
+/* popup */
+/*********/
+
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 101;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-body {
+    margin: auto;
+    padding: .5rem .5rem .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .3rem;
+}
+
+.popup-close {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+  
+  /* Responsivo  */
+  @media screen and (max-width: 600px) {
+    .topnav .search-container {
+      float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .search-container button {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    .topnav input[type=text] {
+      border: 1px solid #ccc;  
+    }
+  }
+
+
+@media screen and (min-width: 480px) {
+    #wrap>nav .navbar {
+        justify-content: space-between;
+    }
+
+    #wrap>nav .navbar a:first-child {
+        margin-right: 0
+    }
+
+    #wrap>nav .navbar a {
+        flex-direction: row;
+        padding: 10px;
+    }
+
+    #wrap>nav .navbar a i {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        margin-right: .5rem;
+    }
+
+    #wrap>nav a img {
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-bottom: 0;
+        margin-right: .5rem;
+    }
+
+    #wrap>header {
+        margin: 5.5rem 0.5rem 0.5rem 0.5rem;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    body {
+        min-height: 260px;
+        max-height: 100%;
+    }
+
+    #wrap>main {
+        flex-direction: row;
+    }
+
+    #wrap>main>aside {
+        margin-left: .5rem;
+        min-width: 260px;
+        max-width: 260px;
+    }
+
+    #wrap>main h3 {
+        margin: 3px 0px 0px 0px;
+    }
+}
