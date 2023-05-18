@@ -13,7 +13,9 @@ const app = {
     siteName: 'Delicious Meals',
     siteSlogan: 'Tasty and juicy recipes for your daily life.',
     siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior</a>',
-    apiBaseURL: 'https://api.edamam.com'
+    apiAppId: '2c418d25',
+    apiAppKey: '3eed41f656746f424c7304c0cb6a7939',
+    apiBaseURL: 'https://api.edamam.com/api/recipes/v2?type=public&app_id=${apiAppId}&app_key=${apiAppKey}'
 }
 
 /*Altera as informações mutáveis do site como logo, slogan, nome
