@@ -1,16 +1,25 @@
-// Javascript using JQuery and 
-// A recipe-search site.
-// By Chosen Child.
+/**
+ * Estrutura de Blog
+ * MIT License 2023 By Lucas Belchior
+ **/
+
+/**
+ * JavaScript do aplicativo.
+ * Depende de "jQuery".
+ */
+
+// Variável que define as informações básicas do site/aplicativo. 
 const app = {
     siteName: 'Delicious Meals',
     siteSlogan: 'Tasty and juicy recipes for your daily life.',
     siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior</a>',
-    apiAppKey: '&app_key=3eed41f656746f424c7304c0cb6a7939',
-    apiAppId: '&app_id=2c418d25',
-    apiBaseURL: 'https://api.edamam.com/api/recipes/v2?type=public&q=',
+    apiAppId: '2c418d25',
+    apiAppKey: '3eed41f656746f424c7304c0cb6a7939',
+    apiBaseURL: 'https://api.edamam.com/api/recipes/v2?type=public&app_id=${apiAppId}&app_key=${apiAppKey}'
 }
 
-// Altera os dados das informações modificáveis do site.
+/*Altera as informações mutáveis do site como logo, slogan, nome
+utilizando os valores inseridos na variável app.*/
 $('#siteInfos').html(app.siteName + '<br>' + '<small>' + app.siteSlogan + '</small>')
 $('#siteLicense').html('Desenvolvido por ' + app.siteLicense)
 
@@ -398,18 +407,3 @@ const cookie = {
         return ''
     }
 }
-
-// Função para buscar as receitas na API e extrair seus dados.
-$('#searchBox').submit((event) => { 
-    event.preventDefault()
-    var searchValue = $('#searchField').val()
-    getRecipes(searchValue)
-})
-
-function getRecipes(searchValue) {
-    $.get(app.apiBaseURL + searchValue + app.apiAppId + app.apiAppKey)
-    .done((data) => {
-        console.log(data)
-    })
-}
-
