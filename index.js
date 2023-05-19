@@ -403,7 +403,13 @@ const cookie = {
 $('#searchBox').submit((event) => { 
     event.preventDefault()
     var searchValue = $('#searchField').val()
+
+    if (!(searchValue == '')){
+        return false 
+    }
+    else {
     getRecipes(searchValue)
+}
 })
 
 function getRecipes(searchValue) {
@@ -412,4 +418,3 @@ function getRecipes(searchValue) {
         console.log(data)
     })
 }
-
