@@ -5,9 +5,7 @@ const app = {
     siteName: 'Delicious Meals',
     siteSlogan: 'Tasty and juicy recipes for your daily life.',
     siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior</a>',
-    apiAppKey: '&app_key=3eed41f656746f424c7304c0cb6a7939',
-    apiAppId: '&app_id=2c418d25',
-    apiBaseURL: 'https://api.edamam.com/api/recipes/v2?type=public&q=',
+    apiBaseURL: 'http://localhost:8080/',
 }
 
 // Altera os dados das informações modificáveis do site.
@@ -413,7 +411,7 @@ $('#searchBox').submit((event) => {
 })
 
 function getRecipes(searchValue) {
-    $.get(app.apiBaseURL + searchValue + app.apiAppId + app.apiAppKey)
+    $.get(app.apiBaseURL + searchValue)
     .done((data) => {
         console.log(data)
     })

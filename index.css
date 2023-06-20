@@ -66,6 +66,8 @@ header {
 
 #wrap>main>article {
     background-color: #fff;
+    align-items: center;
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
