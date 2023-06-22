@@ -2,12 +2,10 @@
 // A recipe-search site.
 // By Chosen Child.
 const app = {
-    siteName: 'Delicious Meals',
-    siteSlogan: 'Tasty and juicy recipes for your daily life.',
+    siteName: 'Fonte do Sabor',
+    siteSlogan: 'Experimente as melhores receitas na palma de sua mão.',
     siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior</a>',
-    apiAppKey: '&app_key=3eed41f656746f424c7304c0cb6a7939',
-    apiAppId: '&app_id=2c418d25',
-    apiBaseURL: 'https://api.edamam.com/api/recipes/v2?type=public&q=',
+    apiBaseURL: ''
 }
 
 // Altera os dados das informações modificáveis do site.
