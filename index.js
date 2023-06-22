@@ -5,7 +5,7 @@ const app = {
     siteName: 'Delicious Meals',
     siteSlogan: 'Tasty and juicy recipes for your daily life.',
     siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior</a>',
-    apiBaseURL: 'http://localhost:8080/',
+    apiBaseURL: 'http://localhost:8081/',
 }
 
 // Altera os dados das informações modificáveis do site.
