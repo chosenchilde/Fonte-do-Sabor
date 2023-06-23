@@ -235,6 +235,7 @@ nav {
     text-decoration: none;
     z-index: 1;
     position: fixed;
+    margin-bottom: 2rem;
 
 }
 
