@@ -1,6 +1,6 @@
 /*
  * Folhas de estilo do template do site.
- * By Luferat
+ * By LuCanThai
  */
 
 /* Importa bibliotecas externas. */
@@ -234,6 +234,9 @@ nav {
     box-shadow: 1px 3px 4px #E6E6E6;
     align-items: center;
     text-decoration: none;
+    position: relative;
+    z-index: 1;
+  
   }
   
   .navigation {
@@ -298,6 +301,7 @@ nav {
     cursor: pointer;
     font-size: 14px;
     padding-top: 4px;
+    
   }
   
   .search-button:hover + .search-input, .search-input:hover, .search:hover .search-input {
@@ -308,74 +312,18 @@ nav {
     height: 25px !important;
   }
 
-  @media screen and (max-width: 1000px){
-    nav {
-    width: 1038px;
-      font-size: 10px;
-      display: block;
-      height: 200px;
-    }
-    .brand {
-      display: block;
-      width: 100%;
-      text-align: center;
-      margin: 0;
-      font-size: 1rem;
-    }
-    .navigation{
-      display: block;
-      margin: 0%;
-    }
-    .menu{
-      display: block;
-      width: 100%;
-      text-align: center;
-      margin: 0;
-      margin-left: -36px;
-      margin-top: -10px;
-      font-size: 1rem;
-      
-    }
-    menu ul li{
-      display: block;
-      width: 100%;
-      margin: 0;
-    }
-    .search{
-      display: block;
-      width: 100%;
-      text-align: center;
-      font-size: 1rem;
-    }
-    .search-content{
-      display: block;
-      width: 100%;
-      text-align: center;
-      font-size: 1rem;
-    }
-    
-    .search-button{
-      display: block;
-      width: 7%;
-      text-align: center;
-      margin-left: 240px;
-      font-size: 1rem;
-    }
-    .search-input{
-      display: block;
-      width: 30%;
-      text-align: center;
-      margin-left: 310px;
-      font-size: 1rem;
-    }
-  }
-
+ 
 /* Rodapé */
 .footer { 
 	background-color:#ce6f2f; 
 	color:#fff; 
 	font-size:0.875rem; 
-    margin-top: 1rem;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 2;
+  clear: both;
+  
+  
 }
 .footer .content { float:left; width:90%; margin:0 5%; padding: 1rem 0; }
 .container { float: left; width:100%; }
