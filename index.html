@@ -16,37 +16,62 @@
 <body>
     <!--- Wrap --->
     <div id="wrap">
-
-        <!--- Header --->
-        <header>
-            <img srec="images/logo.png" alt="Logotipo Delicious Meals">
-            <h1 id="siteInfos">
-                Name<br>
-                <small>Slogan</small>
-            </h1>
-        </header>
-
-        <!--- Nav --->
-        <nav>
-            <div class="topnav">
-                <a class="active" href="home">Home</a>
-                <a href="about">About</a>
-                <div class="search-container">
-                  <form action="/action_page.php">
-                    <input type="text" placeholder="Search a recipe here..." id="search" name="search" required minlength="4">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                  </form>
-                </div>
-              </div>
-        </nav>
+      <nav>
+         <div class="brand">
+           <h3>Fonte do Sabor</h3>
+         </div>
+         <div class="navigation">
+           <ul class="menu">
+             <li><a href="#">Início</a></li>
+             <li><a href="#">Sobre</a></li>
+             <li><a href="#">Contato</a></li>
+           </ul>
+           <div class="search">
+             <div class="search-content">
+               <button class="search-button"><i class="fa fa-search"></i></button>
+               <input type="text" class="search-input" placeholder="Pesquise aqui">
+             </div>
+           </div>
+         </div>
+       </nav>
 
         <!--- Main --->
-        <main></main>
+        <main><div>Teste</div>
+        </main>
 
-        <!--- Footer --->
-        <footer></footer>
-        <hr class="nbsp">
-    </div>
+        <!-- Rodapé -->
+      </div>
+        <!-- Primeira linha -->
+        <footer class="footer container">
+          <div class="content">
+              <div class="contFooter">
+                  <h3 class="titleFooter">Menu <i class="fa-solid fa-bars fa-fw"></i></h3>
+
+                  <ul>
+                      <li><a href="home" title="Página Inícial">Página Inícial</a></li>
+                      <li><a href="about" title="Sobre o Site">Sobre o Site</a></li>
+                      <li><a href="privacity" title="Política de Privacidade">Política de Privacidade</a></li>
+                      <li><a href="contacts" title="Fale Conosco">Fale Conosco</a></li>
+                  </ul>
+
+              </div>
+
+              <div class="contFooter">
+                  <h3 class="titleFooter">Contato <i class="fa-solid fa-phone fa-fw"></i></h3>
+                  <p><i class="fa-solid fa-envelope fa-fw"></i> codeblog@coding.com</p>
+                  <p><i class="fa-solid fa-phone fa-fw"></i> 21 9XXXX-XXXX</p>
+                  <p><i class="fa-brands fa-whatsapp"></i> 21 9XXXX-XXXX</p>
+
+              </div>
+          </div>
+
+          <div class="copyright">
+
+              <p class="siteCopy">Code Blog &copy; 2023</p>
+              <p class="siteBy" id="siteLicense">A</p>
+          </div>
+      </footer>
+      <hr class="nbsp">
     <!--- Fim do Wrap --->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="index.js"></script>

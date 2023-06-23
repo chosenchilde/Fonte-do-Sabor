@@ -18,88 +18,30 @@ function myHome() {
 
     var articleList = '';
 
-    $.get(app.apiBaseURL + 'articles', {
-        _sort: 'date',
-        _order: 'desc',
-        status: 'on'
-    })
+    $.get(app.apiBaseURL + 'receita')
         .done((data) => {
-            data.forEach((art) => {
+            console.log(data)
+
+            data.forEach((item) => {
+
+
+
                 articleList += `
-                    <div class="article art-item" data-id="${art.id}">
-                        <img src="${art.thumbnail}" alt="${art.title}">
-                        <div>
-                            <h4>${art.title}</h4>
-                            <p>${art.resume}</p>
-                        </div>
-                    </div>                    
-                `
+        
+                <div class="recipe">
+                    
+                    <div class="recipe-image"><img src="${item.img}" alt="${item.name}"></div>
+                    <div class="recipe-title">${item.name}</div>
+                </div>
+                    
+                    `
             })
-            $('#artList').html(articleList)
 
-            getMostViewed()
-            getLastComments()
-        })
-        .fail((error) => {
-            $('#artList').html('<p class="center">Oooops! Não encontramos nenhum artigo...</p>')
-        })
+            $("#recipe-container").html(articleList);
 
-}
+        });
 
-function getMostViewed(limit) {
 
-    var htmlOut = ''
 
-    $.get(app.apiBaseURL + 'articles', {
-        status: 'on',
-        _sort: 'views',
-        _order: 'desc',
-        _limit: limit || 5
-    })
-        .done((data) => {
-            if (data.length > 0) {
-                htmlOut = '<ul>'
-                data.forEach((item) => {
-                    htmlOut += `<li class="article" data-id="${item.id}">${item.title}</li>`
-                })
-                htmlOut += '</ul>'
-            } else {
-                htmlOut = '<p class="center">Nenhum artigo encontrado.</p>'
-            }
-
-            $('#mostVisited').html(htmlOut)
-        })
-        .fail((error) => {
-            $('#mostVisited').html('<p class="center">Nenhum artigo encontrado.</p>')
-        })
-
-}
-
-function getLastComments(limit) {
-
-    var htmlOut = ''
-
-    $.get(app.apiBaseURL + 'comments', {
-        status: 'on',
-        _sort: 'date',
-        _order: 'desc',
-        _limit: limit || 5
-    })
-        .done((data) => {
-            if (data.length > 0) {
-                htmlOut = '<ul>'
-                data.forEach((item) => {
-                    htmlOut += `<li class="article" data-id="${item.article}">${item.content.truncate(45)}</li>`
-                })
-                htmlOut += '</ul>'
-            } else {
-                htmlOut = '<p class="center">Nenhum comentário ainda.</p>'
-            }
-
-            $('#lastComments').html(htmlOut)
-        })
-        .fail((error) => {
-            $('#lastComments').html('<p class="center">Nenhum comentário ainda.</p>')
-        })
 
 }
