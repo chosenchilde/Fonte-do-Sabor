@@ -319,9 +319,8 @@ nav {
 	color:#fff; 
 	font-size:0.875rem; 
   margin-top: 1rem;
-  position: relative;
-  z-index: 2;
-  clear: both;
+  position: absolute;
+  bottom: 0;
   
   
 }
