@@ -29,9 +29,9 @@ function myHome() {
                 articleList += `
         
                 <div class="recipe">
-                    
                     <div class="recipe-image"><img src="${item.img}" alt="${item.name}"></div>
                     <div class="recipe-title">${item.name}</div>
+                    <div class="recipe-author">Publicado por ${item.author}</div>
                 </div>
                     
                     `

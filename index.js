@@ -5,7 +5,7 @@ const app = {
     siteName: 'Fonte do Sabor',
     siteSlogan: 'Experimente as melhores receitas na palma de sua mão.',
     siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior</a>',
-    apiBaseURL: 'http://localhost:8080/'
+    apiBaseURL: 'http://localhost:8080/receita/search/'
 }
 
 // Altera os dados das informações modificáveis do site.
