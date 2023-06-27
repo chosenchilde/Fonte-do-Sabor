@@ -5,7 +5,7 @@ const app = {
     siteName: 'Fonte do Sabor',
     siteSlogan: 'Experimente as melhores receitas na palma de sua mão.',
     siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior</a>',
-    apiBaseURL: 'http://localhost:8080/receita/search/'
+    apiBaseURL: 'http://localhost:8080/'
 }
 
 // Altera os dados das informações modificáveis do site.
@@ -74,7 +74,7 @@ function myApp() {
     /**
      * Quando clicar em um artigo.
      **/
-    $(document).on('click', '.article', loadArticle)
+    $(document).on('click', '.recipe', loadRecipe)
 
     /**
      * Aviso de cookies → Políticas de privacidade.
@@ -284,9 +284,9 @@ function changeTitle(title = '') {
 /**
  * Carrega o artigo completo.
  **/
-function loadArticle() {
-    sessionStorage.article = $(this).attr('data-id')
-    loadpage('view')
+function loadRecipe() {
+    sessionStorage.recipe = $(this).attr('data-id')
+    loadpage('recipe')
 }
 
 /**
@@ -398,21 +398,20 @@ const cookie = {
 }
 
 // Função para buscar as receitas na API e extrair seus dados.
-$('#searchBox').submit((event) => { 
-    event.preventDefault()
-    var searchValue = $('#searchField').val()
+$('#searchBox').submit(searchRecipe)
 
-    if (!(searchValue == '')){
-        return false 
+function searchRecipe(event) {
+    // event.preventDefault()
+    var searchValue = $('#searchField').val().trim();
+    if (searchValue == '') {
+        return false
     }
     else {
-    getRecipes(searchValue)
-}
-})
+        $.get(app.apiBaseURL + 'receita/search/' + searchValue)
+            .done((data) => { 
+                console.log(data)
+            })
 
-function getRecipes(searchValue) {
-    $.get(app.apiBaseURL + searchValue + app.apiAppId + app.apiAppKey)
-    .done((data) => {
-        console.log(data)
-    })
+        return false
+    }
 }

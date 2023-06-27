@@ -8,10 +8,19 @@
 }
 
 .recipe {
-    height: 290px;
+    height: 250px;
     width: 295px;
     box-shadow: 0px 0px 8px 2px var(--border-color);
     margin: 20px;
+    cursor: pointer;
+    transition: all .8s ease-in-out;
+    filter: gray;
+    -webkit-filter: grayscale(25%);
+}
+
+.recipe:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
 }
 
 .recipe-title {
@@ -20,39 +29,30 @@
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
-    background-color: #e08f16de;
     font-family: 'Bebas Neue';
+
+    background-image: linear-gradient( #b67615, #b67615), linear-gradient(#e08f16, #e08f16);
+    background-size: 0 100%, auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all .2s ease-out;
+}
+
+.recipe-title:hover {
+    background-size: 100% 100%, auto;
 }
 
 .recipe-image {
     height: 200px;
 }
 
-.recipe-author {
-    height: 2px;
-    background-color: #fff;
-    padding: 10px 10px 10px 10px;
-    font-size: 15px;
-    text-align: right;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .recipe-image img {
     height: 100%;
     width: 100%;
-    transition: all .8s ease-in-out;
-    filter: gray;
-    -webkit-filter: grayscale(60%);
     justify-content: center;
     align-items: center;
 
 }
-
-img:hover {
-    filter: none;
-    -webkit-filter: grayscale(0);
-}
-
 
 
 @media screen and (min-width: 575px) {

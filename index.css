@@ -241,12 +241,12 @@ nav h3 {
 }
 
 .menu li a:hover {
-    background-color: #ddd;
+    background-color: #aa4c0d;
     color: black;
 }
 
 .menu li a:active {
-    background-color: #d11c0f;
+    background-color: rgb(202, 81, 10);
     color: white;
 }
 

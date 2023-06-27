@@ -1,126 +1,97 @@
-#commentTitle {
+/* Folhas de estilo de home. */
+/* Estiliza o campo de receitas */
+#recipe-container {
     display: flex;
-    align-items: center;
-}
-
-#artMetadata {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    flex-direction: column;
-    font-size: small;
-    background-color: #ccc;
-    padding: .25rem .5rem;
-    border-radius: .3rem;
-    margin-bottom: 1rem;
-}
-
-#artMetadata span:first-child::after {
-    content: "\00a0";
-}
-
-.cmtMetadata,
-.cmtMetatexts {
-    display: flex;
-    align-items: center;
-}
-
-.cmtMetadata {
-    background-color: #ccc;
-    padding: .25rem;
-    border-radius: .3rem;
-    font-size: small;
-}
-
-.cmtMetadata img {
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    margin-right: .5rem;
-}
-
-.cmtMetatexts {
-    flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-.cmtMetatexts span:first-child::after {
-    content: "\00a0";
+.recipe {
+    height: 290px;
+    width: 295px;
+    box-shadow: 0px 0px 8px 2px var(--border-color);
+    margin: 20px;
+    cursor: pointer;
 }
 
-.cmtContent {
-    padding: .5rem 1rem 1.5rem 1rem;
+.recipe-title {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-family: 'Bebas Neue';
+
+    background-image: linear-gradient( #b67615, #b67615), linear-gradient(#e08f16, #e08f16);
+    background-size: 0 100%, auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all .2s ease-out;
 }
 
-
-#commentTitle span {
-    padding: 0 .5rem;
+.recipe-title:hover {
+    background-size: 100% 100%, auto;
 }
 
-#artAuthor {
-    padding-top: 1rem;
+.recipe-image {
+    height: 200px;
 }
 
-#artAuthor img {
-    display: block;
-    margin: auto;
+.recipe-author {
+    height: 2px;
+    background-color: #fff;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.recipe-image img {
+    height: 100%;
     width: 100%;
-    max-width: 300px;
-    border-radius: .3rem;
+    transition: all .8s ease-in-out;
+    filter: gray;
+    -webkit-filter: grayscale(60%);
+    justify-content: center;
+    align-items: center;
+
 }
 
-#artAuthor h3 {
-    margin: .25rem 0 0 0;
+img:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
 }
 
-#artAuthor h5 {
-    margin-top: .25rem;
-}
+@media screen and (min-width: 575px) {
 
-#authorArtcicles ul {
-    padding: 0;
-    padding-left: 1rem;
-}
-
-#authorArtcicles ul li {
-    color: #d37f47;
-    text-decoration: none;
-    margin-top: .25rem;
-}
-
-#authorArtcicles ul li:hover {
-    color: #a13014;
-    text-decoration: none;
-}
-
-#commentForm {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 1rem;
-}
-
-#commentForm textarea {
-    margin-top: .5rem;
-}
-
-#commentForm button:hover {
-    background-color: orangered;
-}
-
-.social-list {
-    font-size: small;
-    padding-left: 1.5rem;
-}
-
-@media screen and (min-width: 480px) {
-
-    .cmtMetatexts {
-        flex-direction: row;
+    #artList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    #commentForm {
-        width: 90%;
+    .art-item {
+        width: 48%;
+    }
+    
+}
+
+@media screen and (min-width: 768px) {
+
+    .art-item {
+        width: 100%;
+        display: flex;
     }
 
+    .art-item img {
+        width: 100px;
+        height: auto;
+        border-radius: .5rem 0 0 .5rem;
+    }
+
+    .art-item h4 {
+        padding: .5rem 1rem 0 1rem;
+    }
+    
 }
