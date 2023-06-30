@@ -10,7 +10,7 @@
 }
 
 .recipeView {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     flex-grow: 1;
 }
@@ -18,10 +18,12 @@
 .recipeOne {
     float: left;
     text-align: justify;
+    flex: 1;
 }
 .recipeTwo {
     text-align: justify;
     float: right;
+    flex: 2; 
 }
 
 .subtitles {
@@ -38,14 +40,10 @@
 }
 
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 980px) {
 
-    .cmtMetatexts {
-        flex-direction: row;
-    }
-
-    #commentForm {
-        width: 90%;
+    .subtitles {
+        margin-top: 1px; 
     }
 
 }

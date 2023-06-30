@@ -4,12 +4,14 @@
 const app = {
     siteName: 'Fonte do Sabor',
     siteSlogan: 'Experimente as melhores receitas na palma de sua mão.',
-    siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior</a>',
+    siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior, João Cantel, Thainá Almeida</a>',
+    siteCopy: 'Fonte do Sabor &copy; 2023', 
     apiBaseURL: 'http://localhost:8080/'
 }
 
 // Altera os dados das informações modificáveis do site.
 $('#siteInfos').html(app.siteName + '<br>' + '<small>' + app.siteSlogan + '</small>')
+$('#siteCopy').html(app.siteCopy)
 $('#siteLicense').html('Desenvolvido por ' + app.siteLicense)
 
 /**
