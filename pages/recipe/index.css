@@ -1,117 +1,42 @@
-#commentTitle {
+#rcpImage {
     display: flex;
-    align-items: center;
+    margin-top: 5px;
 }
 
-#artMetadata {
+.recipe-image {
+    width: 400px;
+    height: 250px;
+    border: 10px solid #ce6f2f;
+}
+
+.recipeView {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
     flex-direction: column;
-    font-size: small;
-    background-color: #ccc;
-    padding: .25rem .5rem;
-    border-radius: .3rem;
-    margin-bottom: 1rem;
+    flex-grow: 1;
 }
 
-#artMetadata span:first-child::after {
-    content: "\00a0";
+.recipeOne {
+    float: left;
+    text-align: justify;
+}
+.recipeTwo {
+    text-align: justify;
+    float: right;
 }
 
-.cmtMetadata,
-.cmtMetatexts {
-    display: flex;
-    align-items: center;
+.subtitles {
+    color: rgb(0, 0, 0);
+    font: 700 20px Roboto, sans-serif;
+    margin: 0px;
+    background: #ce6f2f;
+    color: white;
+    padding: 10px 15px 10px 15px;
+    display: inline-block;
+    text-transform: uppercase;
+    height: 45px;
+    right: 30rem; 
 }
 
-.cmtMetadata {
-    background-color: #ccc;
-    padding: .25rem;
-    border-radius: .3rem;
-    font-size: small;
-}
-
-.cmtMetadata img {
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    margin-right: .5rem;
-}
-
-.cmtMetatexts {
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.cmtMetatexts span:first-child::after {
-    content: "\00a0";
-}
-
-.cmtContent {
-    padding: .5rem 1rem 1.5rem 1rem;
-}
-
-
-#commentTitle span {
-    padding: 0 .5rem;
-}
-
-#artAuthor {
-    padding-top: 1rem;
-}
-
-#artAuthor img {
-    display: block;
-    margin: auto;
-    width: 100%;
-    max-width: 300px;
-    border-radius: .3rem;
-}
-
-#artAuthor h3 {
-    margin: .25rem 0 0 0;
-}
-
-#artAuthor h5 {
-    margin-top: .25rem;
-}
-
-#authorArtcicles ul {
-    padding: 0;
-    padding-left: 1rem;
-}
-
-#authorArtcicles ul li {
-    color: #d37f47;
-    text-decoration: none;
-    margin-top: .25rem;
-}
-
-#authorArtcicles ul li:hover {
-    color: #a13014;
-    text-decoration: none;
-}
-
-#commentForm {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 1rem;
-}
-
-#commentForm textarea {
-    margin-top: .5rem;
-}
-
-#commentForm button:hover {
-    background-color: orangered;
-}
-
-.social-list {
-    font-size: small;
-    padding-left: 1.5rem;
-}
 
 @media screen and (min-width: 480px) {
 

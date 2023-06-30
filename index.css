@@ -61,28 +61,66 @@ header {
 /* Alterações do wrap*/
 #wrap>main {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     flex-grow: 1;
-    margin: 0 .5rem;
 }
 
 #wrap>main>article {
-    background-color: #fff;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    background-color: rgba(255, 255, 255, .9);
     flex-grow: 1;
     padding: 0 1rem;
 }
 
 #wrap>main>aside {
-    background-color: #fff;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    flex-grow: 1;
+    background-color: rgba(255, 237, 205, .9);
     padding: 0 1rem;
+}
+
+/*********/
+/* aside */
+/*********/
+
+main aside ul {
+    font-size: 95%;
+    padding: 0;
+    padding-left: 1rem;
+}
+
+main aside ul li {
+    margin-top: .25rem;
+}
+
+main aside ul li.article {
+    color: steelblue;
+    cursor: pointer;
+}
+
+main aside ul li.article:hover {
+    color: orangered;
+    text-decoration: underline;
+}
+
+/* Adicionando fundo laranja, linha e cores.*/
+#wrap>main h2 {
+    color: rgb(0, 0, 0);
+    font: 700 20px Roboto, sans-serif;
+    margin: 0px;
+    background: #ce6f2f;
+    color: white;
+    padding: 10px 15px 10px 15px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+#wrap>main h2:after {
+    content: " ";
+    display: block;
+    border-bottom: 2px solid #ce6f2f;
+    background: black;
+    width: 73%;
+    position: absolute;
+    left: 0;
+    margin-top: 10px;
 }
 
 /* Barra de rolamento vertical personalizada */
@@ -337,8 +375,9 @@ nav h3 {
     color: #fff;
     font-size: 0.875rem;
     margin-top: 0.25rem;
-    position: relative;
     bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .footer .content {
@@ -432,7 +471,7 @@ nav h3 {
 }
 
 /*Responsivo*/
-@media screen and (min-width:48em) {
+@media (min-width:48em) {
     .contFooter {
         width: 30%;
         margin-right: 5%;
