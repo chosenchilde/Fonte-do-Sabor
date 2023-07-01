@@ -417,3 +417,27 @@ function searchRecipe(event) {
         return false
     }
 }
+
+// Calcula a idade com base na data.
+function getAge(sysDate) {
+    // Obtendo partes da data atual.
+    const today = new Date()
+    const tYear = today.getFullYear()
+    const tMonth = today.getMonth() + 1
+    const tDay = today.getDate()
+
+    // Obtendo partes da data original.
+    const parts = sysDate.split('-')
+    const pYear = parts[0]
+    const pMonth = parts[1]
+    const pDay = parts[2]
+
+    // Calcula a idade pelo ano.
+    var age = tYear - pYear
+
+    // Verificar o mês e o dia.
+    if (pMonth > tMonth || pMonth == tMonth && pDay > tDay) age--
+
+    // Retorna a idade.
+    return age
+}

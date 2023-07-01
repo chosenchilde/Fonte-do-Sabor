@@ -110,6 +110,8 @@ main aside ul li.article:hover {
     padding: 10px 15px 10px 15px;
     display: inline-block;
     text-transform: uppercase;
+    width: auto;
+    max-width: 999px;
 }
 
 #wrap>main h2:after {
@@ -207,6 +209,7 @@ main aside ul li.article:hover {
     #wrap>main {
         flex-direction: row;
     }
+
 
     #wrap>main>aside {
         margin-left: .5rem;

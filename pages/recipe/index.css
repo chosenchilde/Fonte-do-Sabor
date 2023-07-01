@@ -10,7 +10,7 @@
 }
 
 .recipeView {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
@@ -20,30 +20,71 @@
     text-align: justify;
     flex: 1;
 }
+
 .recipeTwo {
     text-align: justify;
     float: right;
-    flex: 2; 
+    flex: 2;
+    border: none;
 }
 
 .subtitles {
-    color: rgb(0, 0, 0);
     font: 700 20px Roboto, sans-serif;
-    margin: 0px;
+    margin-top: 3px;
     background: #ce6f2f;
     color: white;
     padding: 10px 15px 10px 15px;
     display: inline-block;
     text-transform: uppercase;
     height: 45px;
-    right: 30rem; 
 }
 
+.rcpMetaData {
+    background-color: #ececec;
+    width: 400px;
+    height: 200px;
+    color: #000;
+    text-align: justify;
+}
 
-@media screen and (min-width: 980px) {
+.commentsSection {
+    margin-top: 3px;
+}
 
+.authorName {
+    font: 700 18px Roboto, sans-serif;
+    text-transform: uppercase;
+}
+
+.authorPhoto {
+    width: 200px;
+    height: 200px;
+    border: 5px solid #ce6f2f;
+    margin-right: 20rem;
+}
+
+.authorPhoto img {
+    width: 190px;
+    height: 190px;
+}
+
+@media screen and (min-width: 900px) {
     .subtitles {
-        margin-top: 1px; 
+        margin-top: 1px;
     }
+}
+
+@media screen and (min-width: 1050px) {
+    .recipeView {
+        flex-direction: row;
+    }
+
+    .recipeTwo {
+        margin-top: 2.6rem;
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 1050px){
 
 }

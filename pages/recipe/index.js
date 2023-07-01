@@ -25,7 +25,7 @@ function myView() {
          * e armazena em (data) que pode ser utilizada em outro momento. 
          **/
         .done((data) => {
-            console.log(data.name)
+            if (!data.id) loadpage('e404')
             // Adiciona o títlo da receita.
             $('#rcpTitle').html(data.name)
             // Adiciona a imagem da receita.
@@ -34,8 +34,12 @@ function myView() {
             $('#rcpIngredients').html(data.ingredients)
             // Adiciona o conteúdo da receita.
             $('#rcpContent').html(data.content)
-            // Muda o título da página de acordo com o artigo aberto.
+            // Muda o título da página de acordo com o receita aberto.
             changeTitle(data.name)
+            // Obtém os dados a respeito do autor.
+            getAuthorData(data)
+            // Atualiza o número de visualizações na receita.
+            updateViews(data)
         })
 
         // Caso não encontre o artigo, executa uma mensagem de erro e executa a pagina e404.
@@ -44,4 +48,24 @@ function myView() {
             loadpage('e404')
         })
 
+}
+
+function getAuthorData(data) {
+    $.get(app.apiBaseURL + 'usuario/' + data.author)
+        .done((userData) => {
+            console.log(userData);
+            $('#rcpAuthor').html(`
+                <div class="authorPhoto"><img src="${userData.photo}" alt="${userData.name}"></div>
+                <div class="authorName">${userData.name}</div>
+                <p>${userData.description}</p>
+            `)
+        })
+}
+
+
+function updateViews(data) {
+    $.ajax({
+        type: 'PATCH',
+        url: app.apiBaseURL + 'receita/' + data.id
+    });
 }
