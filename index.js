@@ -5,7 +5,7 @@ const app = {
     siteName: 'Fonte do Sabor',
     siteSlogan: 'Experimente as melhores receitas na palma de sua mão.',
     siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior, João Cantel, Thainá Almeida</a>',
-    siteCopy: 'Fonte do Sabor &copy; 2023', 
+    siteCopy: 'Fonte do Sabor &copy; 2023',
     apiBaseURL: 'http://localhost:8080/'
 }
 
@@ -41,9 +41,21 @@ function myApp() {
 
     onstorage = popUpOpen
 
-    // Aviso de cookies → Exibir aviso.
-    if (cookie.get('acceptCookies') == 'on') $('#aboutCookies').hide()
+    // Aceite de cookies.
+    if (cookie.get('acceptCookies') == 'on')
+        $('#aboutCookies').hide()
     else $('#aboutCookies').show()
+
+    // Monitor de usuário logado.
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            $('#navUser').html(`Perfil`)
+            $('#navUser').attr('href', 'profile')
+        } else {
+            $('#navUser').html(`Login`)
+            $('#navUser').attr('href', 'login')
+        }
+    });
 
     /**
      * IMPORTANTE!
@@ -95,56 +107,53 @@ function myApp() {
 
 }
 
-/**
- * Função que processa o clique em um link.
- **/
+// Login do Firebase Authenticator.
+function fbLogin() {
+    firebase.auth().signInWithPopup(provider)
+        .then((user) => {
+            popUp({ type: 'success', text: `Olá ${user.user.displayName}!` })
+            loadpage(location.pathname.split('/')[1])
+        })
+        .catch((error) => {
+            try {
+                popUp({ type: 'error', text: 'Ooops! Popups estão bloqueados!<br>Por favor, libere-os!' })
+            } catch (e) {
+                alert('Ooops! Popups estão bloqueados!\nPor favor, libere-os!')
+            }
+        })
+}
+
+// Processa rotas.
 function routerLink() {
 
-    /**
-     * Extrai o valor do atributo "href" do elemento clicado e armazena na 
-     * variável "href".
-     * 
-     * OBS: $(this) faz referência especificamente ao elemento que foi clicado.
-     * 
-     * Referências:
-     *  • https://api.jquery.com/attr/
-     *  • https://www.w3schools.com/jquery/jquery_syntax.asp
-     **/
+    // Obtém e sanitiza a rota do elemento clicado.
     var href = $(this).attr('href').trim().toLowerCase()
 
-    /**
-     * Se clicou em um link externo (http://... OU https://...) ou em uma 
-     * âncora (#...),devolve o controle da página para o navegador (return true) 
-     * que fará o processamento normal.
-     * 
-     * OBS: Os carateres '||' (pipe pipe) significam a lógica 'OR' (OU) onde, se 
-     * apenas uma das expressões for verdadeira, todas as expressões serão 
-     * verdadeiras. Consulte as referências.
-     * 
-     * Referências:
-     *  • https://www.w3schools.com/js/js_if_else.asp
-     *  • https://www.w3schools.com/jsref/jsref_substr.asp
-     *  • https://www.w3schools.com/js/js_comparisons.asp
-     **/
+    // Âncora para o topo da página.
+    if (href == '#top') {
+        window.scrollTo(0, 0)
+        return false
+    }
+
+    // Links externos.
     if (
         href.substring(0, 7) == 'http://' ||
         href.substring(0, 8) == 'https://' ||
         href.substring(0, 4) == 'tel:' ||
-        href.substring(0, 7) == 'mailto:' ||
-        href.substring(0, 1) == '#'
+        href.substring(0, 7) == 'mailto:'
     )
-        // Devolve o controle para o HTML.
         return true
 
-    /**
-     * Carrega a rota solicitada.
-     **/
-    loadpage(href)
+    // Links de login.
 
-    /**
-     * Encerra o processamento do link sem fazer mais nada. 'return false' 
-     * bloqueia a ação normal do navegador sobre um link.
-     **/
+    if (href == 'login') {
+        fbLogin()
+        return false
+
+    }
+
+    // Carrega a rota na SPA.
+    loadpage(href)
     return false
 }
 
@@ -410,7 +419,7 @@ function searchRecipe(event) {
     }
     else {
         $.get(app.apiBaseURL + 'receita/search/' + searchValue)
-            .done((data) => { 
+            .done((data) => {
                 console.log(data)
             })
 

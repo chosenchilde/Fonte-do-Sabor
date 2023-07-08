@@ -69,11 +69,13 @@ header {
     background-color: rgba(255, 255, 255, .9);
     flex-grow: 1;
     padding: 0 1rem;
+    position: relative;
 }
 
 #wrap>main>aside {
-    background-color: rgba(255, 237, 205, .9);
+    background-color: rgba(255, 229, 205, 0.9);
     padding: 0 1rem;
+    position: relative;
 }
 
 /*********/
@@ -105,6 +107,7 @@ main aside ul li.article:hover {
     color: rgb(0, 0, 0);
     font: 700 20px Roboto, sans-serif;
     margin: 0px;
+    margin-top: 0.8rem;
     background: #ce6f2f;
     color: white;
     padding: 10px 15px 10px 15px;
@@ -118,11 +121,82 @@ main aside ul li.article:hover {
     content: " ";
     display: block;
     border-bottom: 2px solid #ce6f2f;
-    background: black;
-    width: 73%;
+    background: #ce6f2f;
+    width: 100%;
     position: absolute;
     left: 0;
     margin-top: 10px;
+}
+
+#wrap>main h3 {
+    color: rgb(0, 0, 0);
+    font: 200 18px Roboto, sans-serif;
+    margin: 0px;
+    background: #ce6f2f;
+    color: white;
+    padding: 10px 15px 10px 15px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+#wrap>nav a img {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+}
+
+/************************/
+/* Mensagens de cookies */
+/************************/
+
+#aboutCookies {
+    display: none;
+}
+
+.cookie-modal {
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.048);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.cookie-body {
+    display: table;
+    background-color: #ddd;
+    padding: .5rem;
+    border-radius: .3rem;
+    margin: auto;
+}
+
+.cookie-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-top: .5rem;
+}
+
+.cookie-buttons button {
+    font-size: 90%;
+    margin: .25rem;
+    border: none;
+    background-image: linear-gradient(rgb(120, 174, 219), rgb(36, 89, 132));
+    color: white;
+    padding: .5rem 1rem;
+    margin-top: .25rem;
+    cursor: pointer;
+}
+
+.cookie-buttons button:hover {
+    background-image: linear-gradient(rgb(255, 125, 78), rgb(177, 47, 0));
+}
+
+.cookie-buttons button:disabled {
+    background-image: linear-gradient(rgb(172, 172, 172), rgb(76, 76, 76));
+    pointer-events: none;
 }
 
 /* Barra de rolamento vertical personalizada */
@@ -158,8 +232,10 @@ main aside ul li.article:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #b86026;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 
@@ -370,6 +446,15 @@ nav h3 {
     .input-search:focus{
     width: 250px;
     }
+}
+
+@media screen and (max-width: 710px) {
+    .btn-search:focus ~ .input-search{
+        width: 180px;}
+    
+        .input-search:focus{
+        width: 180px;
+        }
 }
 
 /* Rodapé */

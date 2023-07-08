@@ -1,12 +1,12 @@
 /**
  * Quando o documento estiver pronto, executa a função para rodá-lo.
  */
-$(document).ready(myView)
+$(document).ready(myRecipe)
 
 /**
  * Executa a função que inclui as chamadas de todas as funções de inicialização e monitoramento.
  */
-function myView() {
+function myRecipe() {
 
     /* Cria uma constante para o ID do artigo que armazena um valor 
     inteiro que é obtido do armazanamento de sessão */
@@ -55,6 +55,7 @@ function getAuthorData(data) {
         .done((userData) => {
             console.log(userData);
             $('#rcpAuthor').html(`
+                <h2>${userData.name}</h2>
                 <div class="authorPhoto"><img src="${userData.photo}" alt="${userData.name}"></div>
                 <div class="authorName">${userData.name}</div>
                 <p>${userData.description}</p>
