@@ -114,7 +114,6 @@ main aside ul li.article:hover {
     display: inline-block;
     text-transform: uppercase;
     width: auto;
-    max-width: 999px;
 }
 
 #wrap>main h2:after {
@@ -332,6 +331,11 @@ nav h3 {
 
 .title-color {
     color: #702d00;
+}
+
+.brand a{
+    text-decoration: none;
+    color: #000;
 }
 
 .navigation {
