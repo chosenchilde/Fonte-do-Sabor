@@ -16,9 +16,9 @@ function myHome() {
 
                 recipeList += `
         
-                <div class="recipe" data-id="${item.id}">
-                    <div class="recipe-image"><img src="${item.img}" alt="${item.name}"></div>
-                    <div class="recipe-title">${item.name}</div>
+                <div class="recipe" data-id="${item.rid}">
+                    <div class="recipe-image"><img src="${item.rimg}" alt="${item.rname}"></div>
+                    <div class="recipe-title">${item.rname}</div>
                 </div>
                     
                     `

@@ -152,22 +152,21 @@ main aside ul li.article:hover {
     display: none;
 }
 
-.cookie-modal {
-    position: fixed;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.048);
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 1.5rem;
-}
-
 .cookie-body {
     display: table;
-    background-color: #ddd;
-    padding: .5rem;
-    border-radius: .3rem;
-    margin: auto;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 435px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 8px 8px 8px 8px;
+    background-color: #f5f5f5;
+    box-shadow: 1px #E6E6E6;
+    z-index: 300;
+    border: 2px solid #a14100;
+    transition: right 0.3s ease;
 }
 
 .cookie-buttons {
@@ -179,24 +178,55 @@ main aside ul li.article:hover {
 }
 
 .cookie-buttons button {
-    font-size: 90%;
-    margin: .25rem;
     border: none;
-    background-image: linear-gradient(rgb(120, 174, 219), rgb(36, 89, 132));
-    color: white;
-    padding: .5rem 1rem;
-    margin-top: .25rem;
+    color: #fff;
+    padding: 8px 0;
+    border-radius: 4px;
+    background: #aa4c0d;
     cursor: pointer;
+    width: calc(100% / 2 - 10px);
+    transition: all 0.2s ease;
 }
 
 .cookie-buttons button:hover {
-    background-image: linear-gradient(rgb(255, 125, 78), rgb(177, 47, 0));
+    background-image: #723309;
 }
 
 .cookie-buttons button:disabled {
-    background-image: linear-gradient(rgb(172, 172, 172), rgb(76, 76, 76));
+    background: #333333;
     pointer-events: none;
 }
+
+.cookies-title {
+    font-size: 20px;
+    color: #f7f7f7;
+    font-weight: 700;
+    background: #b86026;
+    display: block;
+    padding: 8px;
+}
+
+.cookies-title i {
+    color: #702d00;
+}
+
+.cookie-content {
+    margin-top: .5rem;
+    padding: 1px 20px 1px 20px;
+    text-align: justify;
+}
+
+.cookie-modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 9999px;
+    height: 9999px;
+    background-color: #0000001f;
+    z-index: 900;
+}
+
 
 /* Barra de rolamento vertical personalizada */
 ::-webkit-scrollbar {
@@ -333,7 +363,7 @@ nav h3 {
     color: #702d00;
 }
 
-.brand a{
+.brand a {
     text-decoration: none;
     color: #000;
 }
@@ -371,14 +401,14 @@ nav h3 {
     color: white;
 }
 
-.search-box{
+.search-box {
     width: fit-content;
     height: fit-content;
-    position: relative; 
+    position: relative;
     float: right;
-  }
+}
 
-  .input-search{
+.input-search {
     height: 50px;
     width: 50px;
     border-style: none;
@@ -389,15 +419,16 @@ nav h3 {
     transition: all .5s ease-in-out;
     background-color: #e68544;
     padding-right: 40px;
-    color:#000;
-  }
+    color: #000;
+}
 
-  .input-search::placeholder{
-    color:rgba(0, 0, 0, 0.5);
+.input-search::placeholder {
+    color: rgba(0, 0, 0, 0.5);
     font-size: 14px;
     font-weight: 100;
-  }
-  .btn-search{
+}
+
+.btn-search {
     width: 50px;
     height: 50px;
     border-style: none;
@@ -408,24 +439,26 @@ nav h3 {
     border-radius: 50%;
     position: absolute;
     right: 0px;
-    color:#000 ;
-    background-color:transparent;
-    pointer-events: painted;  
-  }
-  .btn-search:focus ~ .input-search{
+    color: #000;
+    background-color: transparent;
+    pointer-events: painted;
+}
+
+.btn-search:focus~.input-search {
     width: 350px;
     border-radius: 0px;
     background-color: #e68544;
-    border-bottom:1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-  }
-  .input-search:focus{
+}
+
+.input-search:focus {
     width: 350px;
     border-radius: 0px;
     background-color: #e68544;
-    border-bottom:1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-  }
+}
 
 .search-button:hover+.search-input,
 .search-input:hover,
@@ -443,22 +476,24 @@ nav h3 {
     }
 }
 
-@media screen and (max-width: 1014px){
-    .btn-search:focus ~ .input-search{
-    width: 250px;}
+@media screen and (max-width: 1014px) {
+    .btn-search:focus~.input-search {
+        width: 250px;
+    }
 
-    .input-search:focus{
-    width: 250px;
+    .input-search:focus {
+        width: 250px;
     }
 }
 
 @media screen and (max-width: 710px) {
-    .btn-search:focus ~ .input-search{
-        width: 180px;}
-    
-        .input-search:focus{
+    .btn-search:focus~.input-search {
         width: 180px;
-        }
+    }
+
+    .input-search:focus {
+        width: 180px;
+    }
 }
 
 /* Rodapé */

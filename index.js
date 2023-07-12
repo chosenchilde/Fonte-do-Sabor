@@ -348,28 +348,30 @@ function popUpClose() {
     $('#popup').remove()
 }
 
+// Tratamento de datas.
 const myDate = {
-
+    // System Date para pt-BR Date.
     sysToBr: (systemDate, time = true) => {
         var parts = systemDate.split(' ')[0].split('-')
         var out = `${parts[2]}/${parts[1]}/${parts[0]}`
         if (time) out += ` às ${systemDate.split(' ')[1]}`
         return out
     },
-
+    // JavaScript para pt-BR date.
     jsToBr: (jsDate, time = true) => {
         var theDate = new Date(jsDate)
         var out = theDate.toLocaleDateString('pt-BR')
         if (time) out += ` às ${theDate.toLocaleTimeString('pt-BR')}`
         return out
     },
-
+    // Today JavaScript para syste date.
     todayToSys: () => {
         const today = new Date()
         return today.toISOString().replace('T', ' ').split('.')[0]
     }
 
 }
+
 
 String.prototype.truncate = String.prototype.truncate ||
     function (n, useWordBoundary) {
@@ -418,7 +420,7 @@ function searchRecipe(event) {
         return false
     }
     else {
-        $.get(app.apiBaseURL + 'receita/search/' + searchValue)
+        $.get(app.apiBaseURL + 'receita/search/?q=' + searchValue)
             .done((data) => {
                 console.log(data)
             })

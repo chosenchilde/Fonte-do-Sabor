@@ -33,12 +33,11 @@ function myProfile() {
         <li><strong>Último login:</strong> ${myDate.jsToBr(user.metadata.lastSignInTime)}</li>
     </ul>
 
-    <p>Clique no botão abaixo para ver/editar seu perfil.</p>
+    <p>Os botões abaixo servem para gerenciar a sua conta.</p>
+    <div class="login-buttons">
     <button id="googleProfile"><i class="fa-brands fa-google fa-fw"></i> Perfil no Google</button>
-
-    <p>Clique no botão abaixo para sair do aplicativo neste dispositivo.
-    Você precisará entrar novamente para ter acesso aos recursos restritos do site.</p>
-    <button id="googleLogout"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Sair / Logout</button>
+    <button id="googleLogout"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Sair</button>
+    </div>
 
     <div class="dzone">
         <div class="line"><hr></div>
@@ -46,7 +45,7 @@ function myProfile() {
         <div class="line"><hr></div>
     </div>
 
-    <p>Para remover sua conta deste aplicativo, acesse seu perfil do Google, localize e remova o aplicativo "<code>project-${firebaseConfig.messagingSenderId}</code>". 
+    <p>Para remover sua conta deste aplicativo, acesse seu perfil do Google, localize e remova o aplicativo "<code>${firebaseConfig.projectId}</code>". 
     Lembre-se que o Google só compartilha seu nome público, seu endereço de e-mail e sua imagem de perfil pública com nosso site,
     significa que, normalmente, não é necessário remover as permissões deste aplicativo da sua conta por questões de privacidade.
     </p>
@@ -56,8 +55,8 @@ function myProfile() {
     <p>Além disso, para ter acesso aos recursos restritos você terá que autorizar o aplicativo novamente e não terá acesso aos seus conteúdos da conta antiga.</p>
 
     <p>Se quiser remover mesmo assim, clique no botão abaixo para acessar a página de permissões:</p>
-    <button id="googleRemove"><i class="fa-solid fa-user-lock fa-fw"></i> Aplicativos Conectados</button>
-    <p>Em seguida, clique no botão [<i class="fa-solid fa-right-from-bracket fa-fw"></i> Sair / Logout] acima.</p>
+    <center><button id="googleRemove"><i class="fa-solid fa-user-lock fa-fw"></i> Aplicativos Conectados</button></center>
+    <p>Em seguida, clique no botão [<i class="fa-solid fa-right-from-bracket fa-fw"></i> Sair ] acima.</p>
 
 </div>
 
