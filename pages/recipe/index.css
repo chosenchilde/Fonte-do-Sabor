@@ -75,6 +75,11 @@
     margin-top: 3px;
 }
 
+.commentForm {
+    margin: 0;
+    width: 900rem;
+}
+
 .authorName {
     font: 700 18px Roboto, sans-serif;
     text-transform: uppercase;
@@ -90,6 +95,109 @@
 .authorPhoto img {
     width: 190px;
     height: 190px;
+}
+
+#commentTitle {
+    display: flex;
+    align-items: center;
+}
+
+.cmtMetadata,
+.cmtMetatexts {
+    display: flex;
+    align-items: center;
+}
+
+.txtContainer {
+  max-width:  100%;
+  height: auto;
+  margin: 20px 10px;
+  padding: 10px;
+  border: 1px solid #f5f5f5;
+  box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+  border-radius: 4px;  
+}
+
+.txtContent {
+min-height: 30px;
+  border-radius: 3px;
+  font-family: Arial;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #797979;
+}
+
+.txtContent > textarea {
+    width: 100%;
+	border: none;
+	background: #E8E8E8;
+	padding: 5px 10px;
+	height: 50%;
+	border-radius: 5px 5px 0px 0px;
+	border-bottom: 2px solid #016BA8;
+	transition: all 0.5s;
+	margin-top: 15px;
+  }
+
+.cmtMetadata {
+    background-color: rgba(255, 229, 205, 0.9);
+    padding: .25rem;
+    border-radius: .3rem;
+    font-size: small;
+}
+
+.cmtUser {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: row;
+    font-size: small;
+    background-color: rgba(255, 229, 205, 0.9);
+    padding: .25rem .5rem;
+    border-radius: .3rem;
+    margin-bottom: 1rem;
+
+}
+
+.cmtMetadata img {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: .5rem;
+}
+
+.cmtMetatexts,
+#artMetadata {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cmtMetatexts span:first-child::after,
+#artMetadata span:first-child::after {
+    content: "\00a0";
+}
+
+.cmtContent {
+    padding: .5rem 1rem 1.5rem 1rem;
+}
+
+#commentTitle hr {
+    flex-grow: 1;
+    border: none;
+    border-top: 1px dotted grey;
+    border-bottom: 1px dotted grey;
+    height: 1px;
+}
+
+#commentTitle span {
+    padding: 0 .5rem;
+}
+
+.social-list {
+    font-size: small;
+    padding-left: 1rem;
+    list-style: none;
 }
 
 @media screen and (min-width: 1050px) {

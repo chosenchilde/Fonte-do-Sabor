@@ -5,17 +5,20 @@ $(document).ready(mySearch)
  **/
 function mySearch() {
 
-    changeTitle()
+    /* Cria uma constante para o ID do artigo que armazena um valor 
+    inteiro que é obtido do armazanamento de sessão */
+    const searchRst = sessionStorage.searchValue
+    console.log(searchRst)
 
-    var recipeList = '';
+    var searchResult = '';
 
-    $.get(app.apiBaseURL + 'receita/home/9')
+    $.get(app.apiBaseURL + 'receita/search/?q=' + searchRst)
         .done((data) => {
-
+            console.log
             data.forEach((item) => {
+                
 
-                recipeList += `
-        
+                searchResult += `
                 <div class="recipe" data-id="${item.id}">
                     <div class="recipe-image"><img src="${item.img}" alt="${item.name}"></div>
                     <div class="recipe-title">${item.name}</div>

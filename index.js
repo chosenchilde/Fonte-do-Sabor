@@ -300,10 +300,8 @@ function loadRecipe() {
     loadpage('recipe')
 }
 
-/**
- * Sanitiza um texto, removendo todas as tags HTML.
- **/
-function stripHtml(html) {
+// Sanitiza um texto, removendo todas as tags HTML.
+function stripHTML(html) {
     let doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.textContent || "";
 }
@@ -420,11 +418,8 @@ function searchRecipe(event) {
         return false
     }
     else {
-        $.get(app.apiBaseURL + 'receita/search/?q=' + searchValue)
-            .done((data) => {
-                console.log(data)
-            })
-
+        sessionStorage.searchValue = searchValue
+        loadpage('search')
         return false
     }
 }

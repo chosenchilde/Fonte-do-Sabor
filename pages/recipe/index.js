@@ -3,6 +3,8 @@
  */
 $(document).ready(myRecipe)
 
+console.log('oi')
+
 /**
  * Executa a função que inclui as chamadas de todas as funções de inicialização e monitoramento.
  */
@@ -15,9 +17,8 @@ function myRecipe() {
     // Se o ID do artigo não é um número, executa a página error404.
     if (isNaN(recipeId)) loadpage('e404')
 
-
     // Solicita os dados armazenados dentro de API
-    $.get(app.apiBaseURL + 'receita/' + recipeId)
+$.get(app.apiBaseURL + 'receita/' + recipeId)
 
         /** 
          * Quando obtém uma resposta, os dados obtidos serão carregados na memória
@@ -33,7 +34,9 @@ function myRecipe() {
             changeTitle(data.rname)
             updateViews(data)
             getAuthor(data)
-
+            getAuthorRecipes(data, 5)
+            getUserCommentForm(data)
+            getRecipeComments(data)
         })
 
         // Caso não encontre o artigo, executa uma mensagem de erro e executa a pagina e404.
@@ -58,6 +61,21 @@ function getAuthor(data) {
 }
 
 
+function getAuthorRecipes(data, limit) {
+    $.get(app.apiBaseURL + `receita/author?uid=${data.rauthor.uid}&rcp=${data.rid}&lim=${limit}`)
+        .done((rcpData) => {
+            if (rcpData.length > 0) {
+                var output = '<h2><i class="fa-solid fa-plus fa-fw"></i> Receitas</h2><ul>'
+                rcpData.forEach((rcpItem) => {
+                    output += `<li class="article" data-id="${rcpItem.rid}">${rcpItem.rname}</li>`
+                });
+                output += '</ul>'
+                $('#authorRecipes').html(output)
+            }
+        })
+} 
+
+
 function updateViews(data) {
     $.ajax({
         type: 'PATCH',
@@ -65,8 +83,8 @@ function updateViews(data) {
     });
 }
 
-function getArticleComments(data) {
-    $.get(app.apiBaseURL + `comentario/${data.id}`)
+function getRecipeComments(data) {
+    $.get(app.apiBaseURL + `comentario/${data.rid}`)
         .done((cmtData) => {
             var commentList = ''
             if (cmtData.length > 0) {
@@ -75,9 +93,9 @@ function getArticleComments(data) {
                     commentList += `
                         <div class="cmtBox">
                             <div class="cmtMetadata">
-                                <img src="${cmt.photo}" alt="${cmt.name}" referrerpolicy="no-referrer">
+                                <img src="${cmt.authorphoto}" alt="${cmt.authorname}" referrerpolicy="no-referrer">
                                 <div class="cmtMetatexts">
-                                    <span>Por ${cmt.name}</span><span>em ${myDate.sysToBr(cmt.date)}.</span>
+                                    <span>Por ${cmt.authorname}</span><span>em ${myDate.sysToBr(cmt.date)}.</span>
                                 </div>
                             </div>
                             <div class="cmtContent">${content}</div>
@@ -85,26 +103,27 @@ function getArticleComments(data) {
                     `
                 })
             } else {
-                commentList = '<p class="center">Nenhum comentário!<br>Seja o primeiro a comentar...</p>'
+                commentList = '<p>Nenhum comentário publicado nesta receita.<br>Seja o primeiro a comentar...</p>'
             }
             $('#commentList').html(commentList)
         })
 }
 
-function getUserCommentForm(artData) {
+function getUserCommentForm(data) {
     var cmtForm = ''
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             cmtForm = `
-                <div class="cmtUser">Comentando como <em>${user.displayName}</em>:</div>
-                <form method="post" id="formComment" name="formComment">
-                    <textarea name="txtContent" id="txtContent"></textarea>
+                <div class="cmtUser">Comentando como: ${user.displayName}</div>
+                <div class="txtContainer"><form method="post" id="formComment" name="formComment">
+                    <textarea class="txtContent" name="txtContent" id="txtContent"></textarea><br>
                     <button type="submit">Enviar</button>
                 </form>
+                </div>
             `
             $('#commentForm').html(cmtForm)
             $('#formComment').submit((event) => {
-                sendComment(event, artData, user)
+                sendComment(event, data, user)
             })
         } else {
             cmtForm = `<p class="center"><a href="login">Logue-se</a> para comentar.</p>`
@@ -114,30 +133,31 @@ function getUserCommentForm(artData) {
 
 }
 
-function sendComment(event, artData, userData) {
+function sendComment(event, recipe, userData) {
     event.preventDefault()
     var content = stripHTML($('#txtContent').val().trim())
     $('#txtContent').val(content)
     if (content == '') return false
     const today = new Date()
     sysdate = today.toISOString().replace('T', ' ').split('.')[0]
-    request = app.apiBaseURL + `comments/find?uid=${userData.uid}&art=${artData.id}&txt=${content}`;
+    request = app.apiBaseURL + `comentario/find?uid=${recipe.uid}&art=${recipe.rid}&txt=${content}`;
 
     $.get(request)
         .done((data) => {
+            console.log(data)
             if (data.length > 0) {
                 popUp({ type: 'error', text: 'Ooops! Este comentário já foi enviado antes...' })
                 return false
             } else {
                 const formData = {
-                    name: userData.displayName,
-                    photo: userData.photoURL,
-                    email: userData.email,
+                    authorname: userData.displayName,
+                    authorphoto: userData.photoURL,
+                    authoremail: userData.email,
                     uid: userData.uid,
-                    receita: data.rid,
-                    comentario: content,
+                    recipe: recipe.rid,
+                    comment: content,
                     date: sysdate,
-                    status: 'on'
+                    user_status: 'on'
                 }
                 $.ajax({
                     type: "POST",
@@ -148,13 +168,13 @@ function sendComment(event, artData, userData) {
                     success: function (data) {
                         if (data.id > 0) {
                             popUp({ type: 'success', text: 'Seu comentário foi enviado com sucesso!' })
-                            loadpage('view')
+                            loadpage('recipe')
                         }
                     },
                     error: function (err) {
                         console.log(err);
                         popUp({ type: 'error', text: 'Ocorreram falhas ao enviar. Tente mais tarde.' })
-                        loadpage('view')
+                        loadpage('recipe')
                     }
                 });
             }
