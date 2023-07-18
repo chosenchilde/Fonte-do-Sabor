@@ -8,8 +8,7 @@ function mySearch() {
     /* Cria uma constante para o ID do artigo que armazena um valor 
     inteiro que é obtido do armazanamento de sessão */
     const searchRst = sessionStorage.searchValue
-    console.log(searchRst)
-
+    
     var searchResult = '';
 
     $.get(app.apiBaseURL + 'receita/search?q=' + searchRst)
