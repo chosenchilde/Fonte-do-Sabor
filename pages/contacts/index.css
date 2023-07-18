@@ -1,0 +1,96 @@
+/* Folhas de estilo de contacts. */
+
+#cForm {
+    display: table;
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+#cForm input,
+#cForm textarea {
+    border: 1px solid red;
+    border-bottom: 3px solid red;
+    background-color: rgb(255, 230, 230);
+    margin-top: -10px;
+    padding: 12px 12px;
+}
+
+#cForm textarea {
+    height: 180px;
+    width: 550px;
+}
+
+#cForm input {
+    width: 550px;
+    height: 30px;
+}
+
+#cForm small {
+    color: grey;
+}
+
+label {
+    margin-bottom: 2px;
+    background-color: #cecece;
+    padding: 1px; 
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    font: 700 13px Roboto, sans-serif;
+    background: #ac571e;
+    color: white;
+    padding: 10px 15px 10px 15px;
+    display: inline-block;
+    width: auto;
+    max-width: 999px;
+}
+
+#cForm input:valid,
+#cForm textarea:valid {
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+    background-color: rgb(232, 240, 254);
+}
+
+#cForm:invalid button {
+    background-image: linear-gradient(rgb(172, 172, 172), rgb(126, 126, 126));
+    pointer-events: none;
+}
+
+.contacts {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+}
+
+.contacts a {
+    font-size: 3.5rem;
+}
+
+.contacts i[class~=fa-square-whatsapp] {
+    color: #128c7e;
+}
+
+.contacts i[class~=fa-square-phone] {
+    color: #666;
+}
+
+.contacts i[class~=fa-square-envelope] {
+    color: orangered;
+}
+
+.contacts i[class~=fa-square-facebook] {
+    color: #1877f2;
+}
+
+.contacts i[class~=fa-square-github] {
+    color: #6e5494;
+}
+
+.contacts i[class~=fa-square-instagram] {
+    color: #405de6;
+}
+

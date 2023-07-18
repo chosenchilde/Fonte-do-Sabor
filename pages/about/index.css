@@ -1,0 +1,44 @@
+.bold {
+    font-weight: 700;
+    color: #e08309;
+}
+
+.about {
+    text-align: justify;
+}
+
+.contacts {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+}
+
+.contacts a {
+    font-size: 3.5rem;
+}
+
+.contacts i[class~=fa-square-whatsapp] {
+    color: #128c7e;
+}
+
+.contacts i[class~=fa-square-phone] {
+    color: #666;
+}
+
+.contacts i[class~=fa-square-envelope] {
+    color: orangered;
+}
+
+.contacts i[class~=fa-square-facebook] {
+    color: #1877f2;
+}
+
+.contacts i[class~=fa-square-github] {
+    color: #6e5494;
+}
+
+.contacts i[class~=fa-square-instagram] {
+    color: #405de6;
+}

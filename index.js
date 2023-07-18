@@ -4,12 +4,14 @@
 const app = {
     siteName: 'Fonte do Sabor',
     siteSlogan: 'Experimente as melhores receitas na palma de sua mão.',
-    siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior</a>',
+    siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior, João Cantel, Thainá Almeida</a>',
+    siteCopy: 'Fonte do Sabor &copy; 2023',
     apiBaseURL: 'http://localhost:8080/'
 }
 
 // Altera os dados das informações modificáveis do site.
 $('#siteInfos').html(app.siteName + '<br>' + '<small>' + app.siteSlogan + '</small>')
+$('#siteCopy').html(app.siteCopy)
 $('#siteLicense').html('Desenvolvido por ' + app.siteLicense)
 
 /**
@@ -39,9 +41,21 @@ function myApp() {
 
     onstorage = popUpOpen
 
-    // Aviso de cookies → Exibir aviso.
-    if (cookie.get('acceptCookies') == 'on') $('#aboutCookies').hide()
+    // Aceite de cookies.
+    if (cookie.get('acceptCookies') == 'on')
+        $('#aboutCookies').hide()
     else $('#aboutCookies').show()
+
+    // Monitor de usuário logado.
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            $('#navUser').html(`Perfil`)
+            $('#navUser').attr('href', 'profile')
+        } else {
+            $('#navUser').html(`Login`)
+            $('#navUser').attr('href', 'login')
+        }
+    });
 
     /**
      * IMPORTANTE!
@@ -74,7 +88,7 @@ function myApp() {
     /**
      * Quando clicar em um artigo.
      **/
-    $(document).on('click', '.article', loadArticle)
+    $(document).on('click', '.recipe', loadRecipe)
 
     /**
      * Aviso de cookies → Políticas de privacidade.
@@ -93,56 +107,53 @@ function myApp() {
 
 }
 
-/**
- * Função que processa o clique em um link.
- **/
+// Login do Firebase Authenticator.
+function fbLogin() {
+    firebase.auth().signInWithPopup(provider)
+        .then((user) => {
+            popUp({ type: 'success', text: `Bem-vindo ao ${app.siteName}, ${user.user.displayName}!` })
+            loadpage(location.pathname.split('/')[1])
+        })
+        .catch((error) => {
+            try {
+                popUp({ type: 'error', text: 'Ooops! Popups estão bloqueados!<br>Por favor, libere-os!' })
+            } catch (e) {
+                alert('Ooops! Popups estão bloqueados!\nPor favor, libere-os!')
+            }
+        })
+}
+
+// Processa rotas.
 function routerLink() {
 
-    /**
-     * Extrai o valor do atributo "href" do elemento clicado e armazena na 
-     * variável "href".
-     * 
-     * OBS: $(this) faz referência especificamente ao elemento que foi clicado.
-     * 
-     * Referências:
-     *  • https://api.jquery.com/attr/
-     *  • https://www.w3schools.com/jquery/jquery_syntax.asp
-     **/
+    // Obtém e sanitiza a rota do elemento clicado.
     var href = $(this).attr('href').trim().toLowerCase()
 
-    /**
-     * Se clicou em um link externo (http://... OU https://...) ou em uma 
-     * âncora (#...),devolve o controle da página para o navegador (return true) 
-     * que fará o processamento normal.
-     * 
-     * OBS: Os carateres '||' (pipe pipe) significam a lógica 'OR' (OU) onde, se 
-     * apenas uma das expressões for verdadeira, todas as expressões serão 
-     * verdadeiras. Consulte as referências.
-     * 
-     * Referências:
-     *  • https://www.w3schools.com/js/js_if_else.asp
-     *  • https://www.w3schools.com/jsref/jsref_substr.asp
-     *  • https://www.w3schools.com/js/js_comparisons.asp
-     **/
+    // Âncora para o topo da página.
+    if (href == '#top') {
+        window.scrollTo(0, 0)
+        return false
+    }
+
+    // Links externos.
     if (
         href.substring(0, 7) == 'http://' ||
         href.substring(0, 8) == 'https://' ||
         href.substring(0, 4) == 'tel:' ||
-        href.substring(0, 7) == 'mailto:' ||
-        href.substring(0, 1) == '#'
+        href.substring(0, 7) == 'mailto:'
     )
-        // Devolve o controle para o HTML.
         return true
 
-    /**
-     * Carrega a rota solicitada.
-     **/
-    loadpage(href)
+    // Links de login.
 
-    /**
-     * Encerra o processamento do link sem fazer mais nada. 'return false' 
-     * bloqueia a ação normal do navegador sobre um link.
-     **/
+    if (href == 'login') {
+        fbLogin()
+        return false
+
+    }
+
+    // Carrega a rota na SPA.
+    loadpage(href)
     return false
 }
 
@@ -284,15 +295,13 @@ function changeTitle(title = '') {
 /**
  * Carrega o artigo completo.
  **/
-function loadArticle() {
-    sessionStorage.article = $(this).attr('data-id')
-    loadpage('view')
+function loadRecipe() {
+    sessionStorage.recipe = $(this).attr('data-id')
+    loadpage('recipe')
 }
 
-/**
- * Sanitiza um texto, removendo todas as tags HTML.
- **/
-function stripHtml(html) {
+// Sanitiza um texto, removendo todas as tags HTML.
+function stripHTML(html) {
     let doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.textContent || "";
 }
@@ -311,9 +320,9 @@ function popUpOpen() {
         var pStyle = ''
 
         switch (pData.type) {
-            case 'error': pStyle = 'background-color: #f00; color: #fff'; break
-            case 'alert': pStyle = 'background-color: #ff0; color: #000'; break
-            case 'success': pStyle = 'background-color: #0f0; color: #000'; break
+            case 'error': pStyle = 'background-color: #E65A2C; color: #fff'; break
+            case 'alert': pStyle = 'background-color: #EBD956; color: #000'; break
+            case 'success': pStyle = 'background-color: #1DDB5D; color: #000'; break
             default: pStyle = 'background-color: #fff; color: #000'
         }
 
@@ -337,28 +346,30 @@ function popUpClose() {
     $('#popup').remove()
 }
 
+// Tratamento de datas.
 const myDate = {
-
+    // System Date para pt-BR Date.
     sysToBr: (systemDate, time = true) => {
         var parts = systemDate.split(' ')[0].split('-')
         var out = `${parts[2]}/${parts[1]}/${parts[0]}`
         if (time) out += ` às ${systemDate.split(' ')[1]}`
         return out
     },
-
+    // JavaScript para pt-BR date.
     jsToBr: (jsDate, time = true) => {
         var theDate = new Date(jsDate)
         var out = theDate.toLocaleDateString('pt-BR')
         if (time) out += ` às ${theDate.toLocaleTimeString('pt-BR')}`
         return out
     },
-
+    // Today JavaScript para syste date.
     todayToSys: () => {
         const today = new Date()
         return today.toISOString().replace('T', ' ').split('.')[0]
     }
 
 }
+
 
 String.prototype.truncate = String.prototype.truncate ||
     function (n, useWordBoundary) {
@@ -398,21 +409,41 @@ const cookie = {
 }
 
 // Função para buscar as receitas na API e extrair seus dados.
-$('#searchBox').submit((event) => { 
-    event.preventDefault()
-    var searchValue = $('#searchField').val()
+$('#searchBox').submit(searchRecipe)
 
-    if (!(searchValue == '')){
-        return false 
+function searchRecipe(event) {
+    // event.preventDefault()
+    var searchValue = $('#searchField').val().trim();
+    if (searchValue == '') {
+        return false
     }
     else {
-    getRecipes(searchValue)
+        sessionStorage.searchValue = searchValue
+        loadpage('search')
+        return false
+    }
 }
-})
 
-function getRecipes(searchValue) {
-    $.get(app.apiBaseURL + searchValue + app.apiAppId + app.apiAppKey)
-    .done((data) => {
-        console.log(data)
-    })
+// Calcula a idade com base na data.
+function getAge(sysDate) {
+    // Obtendo partes da data atual.
+    const today = new Date()
+    const tYear = today.getFullYear()
+    const tMonth = today.getMonth() + 1
+    const tDay = today.getDate()
+
+    // Obtendo partes da data original.
+    const parts = sysDate.split('-')
+    const pYear = parts[0]
+    const pMonth = parts[1]
+    const pDay = parts[2]
+
+    // Calcula a idade pelo ano.
+    var age = tYear - pYear
+
+    // Verificar o mês e o dia.
+    if (pMonth > tMonth || pMonth == tMonth && pDay > tDay) age--
+
+    // Retorna a idade.
+    return age
 }

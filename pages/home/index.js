@@ -1,47 +1,36 @@
 $(document).ready(myHome)
 
 /**
- * IMPORTANTE!
- * URL para obter todos os artigos ordenados pela data e com status ativo:
- * http://localhost:3000/articles?_sort=date&_order=desc&status=on
- * \---------+---------/
- *           |
- *           +--> URL da API → variável 'app.apiBaseURL' em '/index.js'
- **/
-
-/**
  * Função principal da página "home".
  **/
 function myHome() {
 
     changeTitle()
 
-    var articleList = '';
+    var recipeList = '';
 
-    $.get(app.apiBaseURL + 'receita')
+    $.get(app.apiBaseURL + 'receita/home/12')
         .done((data) => {
-            console.log(data)
 
             data.forEach((item) => {
 
-
-
-                articleList += `
+                recipeList += `
         
-                <div class="recipe">
-                    
-                    <div class="recipe-image"><img src="${item.img}" alt="${item.name}"></div>
-                    <div class="recipe-title">${item.name}</div>
+                <div class="recipe" data-id="${item.rid}">
+                    <div class="recipe-image"><img src="${item.rimg}" alt="${item.rname}"></div>
+                    <div class="recipe-title">${item.rname}</div>
+                    <div class="recipe-author">Publicado por <span class="authorName">${item.rauthor.uname}</span></div>
                 </div>
                     
                     `
             })
 
-            $("#recipe-container").html(articleList);
+            $("#recipe-container").html(recipeList);
 
+        })
+        .fail((error) => {
+            $('#recipe-container').html('<p class="center">Oooops! Não encontramos nenhuma receita com este nome. Você pode comentar em alguma receita ou entrar em contato para adicionarmos a receita que deseja.</p>')
         });
-
-
 
 
 }
