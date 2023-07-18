@@ -1,7 +1,3 @@
-.h2AuthorName {
-    font-size: 15px;
-}
-
 #rcpImage {
     display: flex;
     margin-top: 5px;
@@ -27,8 +23,11 @@
 }
 
 .authorAge {
+    margin-top: .6rem;
     padding-top: 3px;
     font-weight: 700;
+    height: 25px;
+    background-color: #bf7442;
 }
 
 .authorBio {
@@ -37,6 +36,7 @@
     height: auto;
     text-align: justify;
 }
+
 
 .recipeTwo h3 {
  margin-top: 1rem;       

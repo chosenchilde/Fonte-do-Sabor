@@ -101,7 +101,7 @@ function getRecipeComments(data) {
                     `
                 })
             } else {
-                commentList = '<div class="noComment">Nenhum comentário publicado nesta receita.<br>Faça login com sua conta do Google para ser o primeiro a comentar.</div>'
+                commentList = '<div class="noComment">Nenhum comentário publicado nesta receita. <br>Seja o primeiro a comentar!</div>'
             }
             $('#commentList').html(commentList)
         })
