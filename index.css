@@ -78,9 +78,36 @@ header {
     padding: 0 1rem;
     position: relative;
 }
+
+#wrap>main>article a {
+    color: #cf5c0f;
+}
+
+#wrap>main>article a:hover {
+    color: #a14100;
+
+}
+
+#wrap>main>article a:after{
+    color: #572300; 
+}
+
 /*********/
 /* aside */
 /*********/
+
+aside a {
+    color: #cf5c0f;
+}
+
+aside a:hover {
+    color: #a14100;
+
+}
+
+aside a:after{
+    color: #572300; 
+}
 
 main aside ul {
     font-size: 95%;
@@ -92,14 +119,18 @@ main aside ul li {
     margin-top: .25rem;
 }
 
-main aside ul li.article {
-    color: steelblue;
+main aside ul li.recipe {
+    color: #cf5c0f;
     cursor: pointer;
 }
 
-main aside ul li.article:hover {
-    color: orangered;
+main aside ul li.recipe:hover {
+    color: #a14100;
     text-decoration: underline;
+}
+
+main aside ul li.recipe:after {
+    color: #572300; 
 }
 
 /* Adicionando fundo laranja, linha e cores.*/
@@ -206,13 +237,26 @@ main aside ul li.article:hover {
     padding: 8px;
 }
 
+.cookie-content a {
+    color: #cf5c0f;
+}
+
+.cookie-content a:hover {
+    color: #a14100;
+
+}
+
+.cookie-content a:after{
+    color: #572300; 
+}
+
 .cookies-title i {
     color: #702d00;
 }
 
 .cookie-content {
     margin-top: .5rem;
-    padding: 1px 20px 1px 20px;
+    padding: 1px 20px 1px 15px;
     text-align: justify;
 }
 
@@ -274,7 +318,7 @@ main aside ul li.article:hover {
 
 #popup {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     z-index: 101;
@@ -286,7 +330,7 @@ main aside ul li.article:hover {
 
 .popup-body {
     margin: auto;
-    padding: .5rem .5rem .5rem 1rem;
+    padding: .5rem .5rem .5rem .5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -497,6 +541,9 @@ nav h3 {
 }
 
 /* Rodapé */
+.footer a {
+    text-decoration: none;
+}
 .footer {
     background-color: #ce6f2f;
     color: #fff;

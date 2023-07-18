@@ -8,7 +8,7 @@
 }
 
 .recipe {
-    height: 250px;
+    height: 290px;
     width: 295px;
     box-shadow: 0px 0px 8px 2px var(--border-color);
     margin: 20px;
@@ -21,6 +21,20 @@
 .recipe:hover {
     filter: none;
     -webkit-filter: grayscale(0);
+}
+
+.recipe-author {
+    height: 2px;
+    background-color: #fff;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.authorName {
+    font-weight: 700;
+    color: #cf590a;
 }
 
 .recipe-title {

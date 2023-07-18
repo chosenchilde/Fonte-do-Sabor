@@ -12,12 +12,40 @@
     display: table;
     line-height: 1.5;
     padding-left: 1rem;
+    margin-top: 1.8rem;
 }
 
 .login-buttons {
     margin: 0; 
     align-items: center;
     justify-content: center;
+}
+
+.userName {
+ color: #c76203f1;
+
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 5px;
+}
+
+.userInfo img{
+    float: left;
+    margin-right: 1rem;
+    width: 100px;
+    height: 100px;
+}
+
+.siteName {
+    color: #cf590a;
+    font-weight: 700;
+}
+
+.userPhoto {
+    border: 10px solid #ce6f2f;
 }
 
 .userProfile button {

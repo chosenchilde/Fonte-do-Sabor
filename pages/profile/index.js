@@ -23,25 +23,24 @@ function myProfile() {
 <div class="userProfile">
 
     <h2>Perfil do usuário</h2>
-    <p>Seu perfil é gerenciado pelo Google.</p>
-
-    <img src="${user.photoURL}" alt="${user.displayName}">
-    <h3>${user.displayName}</h3>
-    <ul>
+    <div class="userInfo">
+    <img class="userPhoto" src="${user.photoURL}" alt="${user.displayName}" referrerpolicy="no-referrer">
+    <ul><h3>${user.displayName}</h3>
         <li><strong>E-mail:</strong> ${user.email}</li>
         <li><strong>Cadastro:</strong> ${myDate.jsToBr(user.metadata.creationTime)}</li>
         <li><strong>Último login:</strong> ${myDate.jsToBr(user.metadata.lastSignInTime)}</li>
     </ul>
+    </div>
 
-    <p>Os botões abaixo servem para gerenciar a sua conta.</p>
-    <div class="login-buttons">
+    <p>Os seus dados em <span class="siteName">${app.siteName}</span> são gerenciados pelo Google. Os botões abaixo servem para gerenciar a sua conta.</p>
+    <center><div class="login-buttons">
     <button id="googleProfile"><i class="fa-brands fa-google fa-fw"></i> Perfil no Google</button>
     <button id="googleLogout"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Sair</button>
-    </div>
+    </div></center>
 
     <div class="dzone">
         <div class="line"><hr></div>
-        <div>&nbsp;DANGER ZONE!&nbsp;</div>
+        <div>&nbsp;Remover Conta!&nbsp;</div>
         <div class="line"><hr></div>
     </div>
 
@@ -50,13 +49,13 @@ function myProfile() {
     significa que, normalmente, não é necessário remover as permissões deste aplicativo da sua conta por questões de privacidade.
     </p>
 
-    <blockquote><em>Leia nossas <a href="policies">Políticas de privacidade</a> para saber mais.</em></blockquote>
+    <center><blockquote><em>Leia nossas <a href="policies">Políticas de privacidade</a> para saber mais.</em></blockquote></center>
 
     <p>Além disso, para ter acesso aos recursos restritos você terá que autorizar o aplicativo novamente e não terá acesso aos seus conteúdos da conta antiga.</p>
 
     <p>Se quiser remover mesmo assim, clique no botão abaixo para acessar a página de permissões:</p>
-    <center><button id="googleRemove"><i class="fa-solid fa-user-lock fa-fw"></i> Aplicativos Conectados</button></center>
-    <p>Em seguida, clique no botão [<i class="fa-solid fa-right-from-bracket fa-fw"></i> Sair ] acima.</p>
+    <center><button id="googleRemove"><i class="fa-solid fa-user-lock fa-fw"></i> Aplicativos Conectados</button>
+    <p>Em seguida, clique no botão [<i class="fa-solid fa-right-from-bracket fa-fw"></i> Sair ] acima.</p></center>
 
 </div>
 

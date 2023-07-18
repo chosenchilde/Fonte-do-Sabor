@@ -1,6 +1,13 @@
+.h2AuthorName {
+    font-size: 15px;
+}
+
 #rcpImage {
     display: flex;
     margin-top: 5px;
+    float: left;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .recipe-image {
@@ -19,29 +26,29 @@
     flex-grow: 1;
 }
 
-.recipeOneTwo {
-    text-align: justify;
-    display: row;
-    flex-grow: 1;
+.authorAge {
+    padding-top: 3px;
+    font-weight: 700;
 }
 
-.recipeOne {
-    float: left;
+.authorBio {
+    background-color: #f3c4a5;
+    padding: 5px 10px 5px 10px;;
+    height: auto;
     text-align: justify;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-}
-
-.recipeTwo {
-    text-align: justify;
-    float: right;
-    flex: 2;
-    border: none;
 }
 
 .recipeTwo h3 {
  margin-top: 1rem;       
+}
+
+#rcpIngredients {
+    text-align: justify;
+}
+
+#rcpContent {
+    line-height: 1.2rem;
+    text-align: justify;
 }
 
 .subtitles {
@@ -64,7 +71,7 @@
     background-color: rgba(255, 229, 205, 0.9);
     padding: .25rem .5rem;
     border-radius: .3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 #rcpMetaData span:first-child::after {
@@ -76,8 +83,9 @@
 }
 
 .commentForm {
-    margin: 0;
-    width: 900rem;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 1rem;
 }
 
 .authorName {
@@ -114,30 +122,71 @@
   margin: 20px 10px;
   padding: 10px;
   border: 1px solid #f5f5f5;
-  box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 2px;
   border-radius: 4px;  
 }
 
-.txtContent {
-min-height: 30px;
-  border-radius: 3px;
-  font-family: Arial;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #797979;
+.noComment {
+    margin-left: 0.6rem;
+    margin-bottom: 1.2rem;
 }
 
-.txtContent > textarea {
+textarea {
     width: 100%;
 	border: none;
-	background: #E8E8E8;
+	background: #fafafa;
 	padding: 5px 10px;
-	height: 50%;
+	height: auto;
+    min-height: 90px;
 	border-radius: 5px 5px 0px 0px;
-	border-bottom: 2px solid #016BA8;
+	border-bottom: 2px solid #ee9b3d;
 	transition: all 0.5s;
 	margin-top: 15px;
+    resize: none;
   }
+
+  .txtButton {
+    background-color: #FFFFFF;
+    border: 0;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #111827;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .txtButton:hover {
+    background-color: rgb(249,250,251);
+  }
+  
+  .txtButton:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  
+  .txtButton:focus-visible {
+    box-shadow: none;
+  }
+
+.txtButtonhover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.txtButton:active {
+  transform: scale(0.95);
+}
 
 .cmtMetadata {
     background-color: rgba(255, 229, 205, 0.9);
@@ -206,11 +255,10 @@ min-height: 30px;
     }
 
     .recipeView {
-        flex-direction: row;
+        flex-direction: column;
     }
 
-    .recipeTwo {
-        margin-top: 4.5rem;
+    .recipeShow {
         padding: 1rem;
 
     }

@@ -12,23 +12,23 @@ function mySearch() {
 
     var searchResult = '';
 
-    $.get(app.apiBaseURL + 'receita/search/?q=' + searchRst)
+    $.get(app.apiBaseURL + 'receita/search?q=' + searchRst)
         .done((data) => {
-            console.log
+
             data.forEach((item) => {
                 
 
                 searchResult += `
-                <div class="recipe" data-id="${item.id}">
-                    <div class="recipe-image"><img src="${item.img}" alt="${item.name}"></div>
-                    <div class="recipe-title">${item.name}</div>
-                    <div class="recipe-author">Publicado por ${item.author}</div>
+                <div class="recipe" data-id="${item.rid}">
+                    <div class="recipe-image"><img src="${item.rimg}" alt="${item.rname}"></div>
+                    <div class="recipe-title">${item.rname}</div>
+                    <div class="recipe-author">Publicado por <span class="authorName">${item.rauthor.uname}</span></div>
                 </div>
                     
                     `
             })
 
-            $("#recipe-container").html(recipeList);
+            $("#recipe-container").html(searchResult);
 
         })
         .fail((error) => {

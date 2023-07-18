@@ -58,7 +58,7 @@ label {
     pointer-events: none;
 }
 
-nav.contacts {
+.contacts {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -66,31 +66,31 @@ nav.contacts {
     padding-bottom: 1.5rem;
 }
 
-nav.contacts a {
-    font-size: 4rem;
+.contacts a {
+    font-size: 3.5rem;
 }
 
-nav.contacts i[class~=fa-square-whatsapp] {
+.contacts i[class~=fa-square-whatsapp] {
     color: #128c7e;
 }
 
-nav.contacts i[class~=fa-square-phone] {
+.contacts i[class~=fa-square-phone] {
     color: #666;
 }
 
-nav.contacts i[class~=fa-square-envelope] {
+.contacts i[class~=fa-square-envelope] {
     color: orangered;
 }
 
-nav.contacts i[class~=fa-square-facebook] {
+.contacts i[class~=fa-square-facebook] {
     color: #1877f2;
 }
 
-nav.contacts i[class~=fa-square-github] {
+.contacts i[class~=fa-square-github] {
     color: #6e5494;
 }
 
-nav.contacts i[class~=fa-square-instagram] {
+.contacts i[class~=fa-square-instagram] {
     color: #405de6;
 }
 

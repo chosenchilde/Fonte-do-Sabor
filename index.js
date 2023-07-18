@@ -111,7 +111,7 @@ function myApp() {
 function fbLogin() {
     firebase.auth().signInWithPopup(provider)
         .then((user) => {
-            popUp({ type: 'success', text: `Olá ${user.user.displayName}!` })
+            popUp({ type: 'success', text: `Bem-vindo ao ${app.siteName}, ${user.user.displayName}!` })
             loadpage(location.pathname.split('/')[1])
         })
         .catch((error) => {
@@ -320,9 +320,9 @@ function popUpOpen() {
         var pStyle = ''
 
         switch (pData.type) {
-            case 'error': pStyle = 'background-color: #f00; color: #fff'; break
-            case 'alert': pStyle = 'background-color: #ff0; color: #000'; break
-            case 'success': pStyle = 'background-color: #0f0; color: #000'; break
+            case 'error': pStyle = 'background-color: #E65A2C; color: #fff'; break
+            case 'alert': pStyle = 'background-color: #EBD956; color: #000'; break
+            case 'success': pStyle = 'background-color: #1DDB5D; color: #000'; break
             default: pStyle = 'background-color: #fff; color: #000'
         }
 

@@ -47,6 +47,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.authorName {
+    font-weight: 700;
+    color: #cf590a;
+}
+
 .recipe-image img {
     height: 100%;
     width: 100%;

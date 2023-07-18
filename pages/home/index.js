@@ -19,6 +19,7 @@ function myHome() {
                 <div class="recipe" data-id="${item.rid}">
                     <div class="recipe-image"><img src="${item.rimg}" alt="${item.rname}"></div>
                     <div class="recipe-title">${item.rname}</div>
+                    <div class="recipe-author">Publicado por <span class="authorName">${item.rauthor.uname}</span></div>
                 </div>
                     
                     `

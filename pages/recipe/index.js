@@ -3,8 +3,6 @@
  */
 $(document).ready(myRecipe)
 
-console.log('oi')
-
 /**
  * Executa a função que inclui as chamadas de todas as funções de inicialização e monitoramento.
  */
@@ -53,9 +51,9 @@ function getAuthor(data) {
             $('#rcpMetaData').html(`Por ${userData.uname}. Publicado ${myDate.sysToBr(data.rdate)}.`)
             $('#rcpAuthor').html(`
                 <h2>${userData.uname}</h2>
-                <div class="authorPhoto"><img src="${userData.uphoto}" alt="${userData.uname}"></div>
-                <h5>${getAge(userData.ubirth)} anos</h5>
-                <p>${userData.ubio}</p>
+                <center><div class="authorPhoto"><img src="${userData.uphoto}" alt="${userData.uname}"></div>
+                <div class="authorAge">${getAge(userData.ubirth)} anos</div></center>
+                <div class="authorBio"><p>${userData.ubio}</p></div>
             `)
         })
 }
@@ -67,7 +65,7 @@ function getAuthorRecipes(data, limit) {
             if (rcpData.length > 0) {
                 var output = '<h2><i class="fa-solid fa-plus fa-fw"></i> Receitas</h2><ul>'
                 rcpData.forEach((rcpItem) => {
-                    output += `<li class="article" data-id="${rcpItem.rid}">${rcpItem.rname}</li>`
+                    output += `<li class="recipe" data-id="${rcpItem.rid}">${rcpItem.rname}</li>`
                 });
                 output += '</ul>'
                 $('#authorRecipes').html(output)
@@ -103,7 +101,7 @@ function getRecipeComments(data) {
                     `
                 })
             } else {
-                commentList = '<p>Nenhum comentário publicado nesta receita.<br>Seja o primeiro a comentar...</p>'
+                commentList = '<div class="noComment">Nenhum comentário publicado nesta receita.<br>Faça login com sua conta do Google para ser o primeiro a comentar.</div>'
             }
             $('#commentList').html(commentList)
         })
@@ -116,8 +114,8 @@ function getUserCommentForm(data) {
             cmtForm = `
                 <div class="cmtUser">Comentando como: ${user.displayName}</div>
                 <div class="txtContainer"><form method="post" id="formComment" name="formComment">
-                    <textarea class="txtContent" name="txtContent" id="txtContent"></textarea><br>
-                    <button type="submit">Enviar</button>
+                    <textarea class="txtContent" name="txtContent" id="txtContent" required minlength="10" placeholder="Digite aqui o seu comentário com no mínimo de 10 caracteres."></textarea><br>
+                    <button class="txtButton" type="submit">Enviar</button>
                 </form>
                 </div>
             `
@@ -140,11 +138,10 @@ function sendComment(event, recipe, userData) {
     if (content == '') return false
     const today = new Date()
     sysdate = today.toISOString().replace('T', ' ').split('.')[0]
-    request = app.apiBaseURL + `comentario/find?uid=${recipe.uid}&art=${recipe.rid}&txt=${content}`;
+    request = app.apiBaseURL + `comentario/find?uid=${userData.uid}&art=${recipe.rid}&txt=${content}`;
 
     $.get(request)
         .done((data) => {
-            console.log(data)
             if (data.length > 0) {
                 popUp({ type: 'error', text: 'Ooops! Este comentário já foi enviado antes...' })
                 return false
@@ -157,7 +154,7 @@ function sendComment(event, recipe, userData) {
                     recipe: recipe.rid,
                     comment: content,
                     date: sysdate,
-                    user_status: 'on'
+                    status: 'on'
                 }
                 $.ajax({
                     type: "POST",
