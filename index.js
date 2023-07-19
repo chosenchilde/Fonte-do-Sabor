@@ -4,7 +4,7 @@
 const app = {
     siteName: 'Fonte do Sabor',
     siteSlogan: 'Experimente as melhores receitas na palma de sua mão.',
-    siteLicense: '<a href="#" title="Lucas Belchior">&copy; 2023 Lucas Belchior, João Cantel, Thainá Almeida</a>',
+    siteLicense: '&copy; 2023 <a href="https://github.com/chosenchilde">Lucas Belchior</a>, <a href="https://github.com/JbCantel">João Cantel</a>, <a href="https://github.com/LMoonsea">Thainá Almeida</a>',
     siteCopy: 'Fonte do Sabor &copy; 2023',
     apiBaseURL: 'http://localhost:8080/'
 }
